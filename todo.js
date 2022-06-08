@@ -10,7 +10,7 @@ let arrayOfTodos = [
   {
     userId: 20,
     id: 2,
-    title: "delectus aut autem",
+    title: "hey there",
     completed: false,
   },
 ];
@@ -24,14 +24,17 @@ const fetchTodos = () => {
 const logTodos = () => {
   console.log(arrayOfTodos);
 };
-
-// console.log(arrayOfTodos[0].title);
-
 const populateTodos = () => {
-  let orderedList = document.getElementById("todo-list");
-  let listItems = document.createElement("LI");
-  // let LI = arrayOfTodos[0].userId;
-  // listItems.createTextNode("title");
-  listItems.innerHTML = arrayOfTodos[0].title;
-  orderedList.appendChild(listItems);
+  let TODO = 7arrayOfTodos.map((todo) => {
+    let orderedList = document.getElementById("todo-list");
+    let listItems = document.createElement("li");
+    const titleToDo = todo.title;
+    // console.log(titleToDo);
+    listItems.innerHTML = `${titleToDo}`;
+    orderedList.appendChild(listItems);
+  });
 };
+// populateTodos();
+
+// let i = "";
+// for (let i = 0; i < arrayOfTodos.length; i++)

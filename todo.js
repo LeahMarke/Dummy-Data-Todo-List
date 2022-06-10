@@ -25,8 +25,8 @@ const logTodos = () => {
   console.log(arrayOfTodos);
 };
 const populateTodos = () => {
-  let TODO = 7arrayOfTodos.map((todo) => {
-    let orderedList = document.getElementById("todo-list");
+  let orderedList = document.getElementById("todo-list");
+  arrayOfTodos.forEach((todo) => {
     let listItems = document.createElement("li");
     const titleToDo = todo.title;
     // console.log(titleToDo);
@@ -34,7 +34,24 @@ const populateTodos = () => {
     orderedList.appendChild(listItems);
   });
 };
-// populateTodos();
+// num = num >= 1 && num <= 10;
+let userID = (id) => {
+  let orderedList = document.getElementById("todo-list-by-ID");
+  let userIDGroup = arrayOfTodos.filter((todo) => {
+    let listItems = document.createElement("li");
+    let id = document.getElementById("quantity");
+    let listByID = todo.id();
+    listItems.innerHTML = `${listByID}`;
+    orderedList.appendChild(listItems);
+  });
+};
 
-// let i = "";
-// for (let i = 0; i < arrayOfTodos.length; i++)
+//   let isComplete = arrayOfTodos.map((todo) => {
+//     return todo.completed === true;
+//   });
+//   let isCompleteFilter = arrayOfTodos.filter((todo) => {
+//     return todo.completed === true;
+//   });
+//   console.log(isComplete);
+//   console.log(isCompleteFilter);
+// };

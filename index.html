@@ -7,16 +7,18 @@
     <title>Document</title>
   </head>
   <body>
-    <form>
+    
     <button onclick="fetchTodos()">Fetch Todos</button>
     <button onclick="logTodos()">Log Todos</button>
     <button onclick="populateTodos()">Populate Todos</button><br />
     <form>
       <label for="quantity">UserID (between 1 and 10):</label>
       <input type="number" id="quantity" name="quantity" min="1" max="10" />
-      <button onclick="userID(this)">Populate Todos By ID</button><br />
     </form>
-    
+    <button onclick="userID(this)">Populate Todos By ID</button>
+    <button onclick="completedTodos()">Completed Todos</button>
+    <button onclick="incompleteTodos()">Incomplete Todos</button>
+
     <ol id="todo-list">
       <!-- LIs will go here -->
     </ol>

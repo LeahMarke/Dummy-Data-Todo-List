@@ -1,40 +1,80 @@
-// We'll pre-populate this array with a couple objects just so it's not undefined if your internet connection isn't working properly.
-
-let arrayOfTodos = [
-  {
-    userId: 14,
-    id: 1,
-    title: "delectus aut autem",
-    completed: false,
-  },
-  {
-    userId: 20,
-    id: 2,
-    title: "hey there",
-    completed: false,
-  },
-];
+let arrayOfTodos;
+let listItems;
+let lis;
+let userIDList;
+let idInput;
+let array;
 
 const fetchTodos = () => {
   fetch("https://jsonplaceholder.typicode.com/todos")
     .then((response) => response.json())
-    .then((json) => (arrayOfTodos = json));
+    .then((data) => (arrayOfTodos = data));
 };
 
 const logTodos = () => {
   console.log(arrayOfTodos);
 };
 const populateTodos = () => {
-  let TODO = 7arrayOfTodos.map((todo) => {
-    let orderedList = document.getElementById("todo-list");
-    let listItems = document.createElement("li");
+  let orderedList = document.getElementById("todo-list");
+  arrayOfTodos.forEach((todo) => {
+    listItems = document.createElement("li");
+    const titleToDo = todo.title;
+    listItems.innerHTML = `${titleToDo}`;
+    orderedList.appendChild(listItems);
+  });
+};
+
+const userID = (id) => {
+  lis = document.querySelectorAll("li");
+  lis.forEach((li) => li.parentNode.removeChild(li));
+  idInput = +document.querySelector("#quantity").value;
+  // console.log(idInput);
+  let orderedList = document.getElementById("todo-list");
+  userIDList = arrayOfTodos.filter((todo) => todo.userId === idInput);
+  // console.log(userIDList);
+  // console.log(typeof idInput);
+  userIDList.forEach((todo) => {
+    listItems = document.createElement("li");
     const titleToDo = todo.title;
     // console.log(titleToDo);
     listItems.innerHTML = `${titleToDo}`;
     orderedList.appendChild(listItems);
   });
 };
-// populateTodos();
 
-// let i = "";
-// for (let i = 0; i < arrayOfTodos.length; i++)
+const completedTodos = () => {
+  lis = document.querySelectorAll("li");
+  lis.forEach((li) => li.parentNode.removeChild(li));
+  let orderedList = document.getElementById("todo-list");
+  if (idInput === undefined) {
+    array = arrayOfTodos;
+  } else array = userIDList;
+  // console.log(array);
+  const completedTasks = array.filter((todo) => todo.completed === true);
+  // console.log(completedTasks);
+  completedTasks.forEach((todo) => {
+    listItems = document.createElement("li");
+    const titleToDo = todo.title;
+    // console.log(titleToDo);
+    listItems.innerHTML = `${titleToDo}`;
+    orderedList.appendChild(listItems);
+  });
+};
+const incompleteTodos = () => {
+  lis = document.querySelectorAll("li");
+  lis.forEach((li) => li.parentNode.removeChild(li));
+  let orderedList = document.getElementById("todo-list");
+  if (idInput === undefined) {
+    array = arrayOfTodos;
+  } else array = userIDList;
+  // console.log(array);
+
+  const incompleteTasks = array.filter((todo) => todo.completed === false);
+  incompleteTasks.forEach((todo) => {
+    listItems = document.createElement("li");
+    const titleToDo = todo.title;
+    // console.log(titleToDo);
+    listItems.innerHTML = `${titleToDo}`;
+    orderedList.appendChild(listItems);
+  });
+};
